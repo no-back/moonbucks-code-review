@@ -63,6 +63,12 @@ function App() {
     }
 
     // remove menu item
+    if (e.target.classList.contains("menu-remove-button")) {
+      if (confirm("해당 메뉴를 삭제하시겠습니까?")) {
+        list.removeChild(e.target.closest("li"));
+        updateMenuCount();
+      }
+    }
   }
 
   function updateMenuCount() {
