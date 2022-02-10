@@ -24,6 +24,8 @@ function App() {
     else if (input.value !== "") addMenuItem();
   });
 
+  list.addEventListener("click", updateMenuItem);
+
   // Functions
   function addMenuItem() {
     const menuItemTemplate = `<li class="menu-list-item d-flex items-center py-2">
@@ -47,6 +49,20 @@ function App() {
 
     updateMenuCount();
     input.focus(); // auto focusing
+  }
+
+  function updateMenuItem(e) {
+    // update menu item
+    if (e.target.classList.contains("menu-edit-button")) {
+      const menuName = e.target.closest("li").querySelector(".menu-name");
+      const rtn = prompt("수정할 메뉴명을 적어주세요.", menuName.innerText);
+
+      if (menuName.innerText === rtn) alert("기존과 동일한 메뉴명입니다.");
+      else if (rtn === null) alert("");
+      e.target.closest("li").querySelector(".menu-name").innerText = rtn;
+    }
+
+    // remove menu item
   }
 
   function updateMenuCount() {
