@@ -18,7 +18,10 @@ describe("menu ui test", () => {
       cy.get(".menu-list-item").should("contain.text", "카페라떼");
     });
 
-    it("엔터키 입력으로 메뉴를 추가한다.", () => {});
+    it("엔터키 입력으로 메뉴를 추가한다.", () => {
+      cy.get("#espresso-menu-name").type("아메리카노{enter}");
+      cy.get(".menu-list-item").should("contain.text", "아메리카노");
+    });
 
     it("확인 버튼을 누르면 input 값은 빈 값으로 초기화한다.", () => {});
 
