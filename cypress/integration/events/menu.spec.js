@@ -12,9 +12,19 @@ describe("menu ui test", () => {
    */
 
   describe("메뉴 추가 event", () => {
-    it("확인 버튼으로 메뉴를 추가한다.", () => {});
+    it("확인 버튼으로 메뉴를 추가한다.", () => {
+      cy.get("#espresso-menu-name").type("카페라떼");
+      cy.get("#espresso-menu-submit-button").click();
+      cy.get(".menu-list-item").should("contain.text", "카페라떼");
+    });
 
-    it("엔터키 입력으로 메뉴를 추가한다.", () => {});
+    it("엔터키 입력으로 메뉴를 추가한다.", () => {
+      cy.get("#espresso-menu-name")
+        .type("아메리카노{enter}")
+        .then(() => {
+          cy.get(".menu-list-item").should("have.text", "아메리카노");
+        });
+    });
 
     it("확인 버튼을 누르면 input 값은 빈 값으로 초기화한다.", () => {});
 

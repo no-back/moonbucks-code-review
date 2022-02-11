@@ -12,7 +12,9 @@ const menuList = document.getElementById("espresso-menu-list");
 const menuListItem = document.querySelectorAll(".menu-list-item");
 const menuName = document.querySelector(".menu-name");
 
-const handleCreateMenu = () => {
+const handleCreateMenuUsingEnter = () => {};
+
+const handleCreateMenuUsingClick = () => {
   const menuListItemClasses = [
     "menu-list-item",
     "d-flex",
@@ -55,4 +57,5 @@ const createElement = (tagName, classArray) => {
   return tag;
 };
 
-menuSubmitButton.addEventListener("click", handleCreateMenu);
+menuNameInput.addEventListener("keyup", handleCreateMenuUsingEnter);
+menuSubmitButton.addEventListener("click", handleCreateMenuUsingClick);
