@@ -25,6 +25,10 @@ const handleCreateMenuUsingEnter = (event) => {
 };
 
 const handleCreateMenuUsingClick = (event) => {
+  if (!menuNameInput.value) {
+    return false;
+  }
+
   const menuListItemClasses = [
     "menu-list-item",
     "d-flex",
