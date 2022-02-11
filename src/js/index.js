@@ -5,16 +5,26 @@
  * li class : menu-list-item
  * menu name (span class) : menu-name
  */
-
+const menuForm = document.getElementById("espresso-menu-form");
 const menuNameInput = document.getElementById("espresso-menu-name");
 const menuSubmitButton = document.getElementById("espresso-menu-submit-button");
 const menuList = document.getElementById("espresso-menu-list");
 const menuListItem = document.querySelectorAll(".menu-list-item");
 const menuName = document.querySelector(".menu-name");
 
-const handleCreateMenuUsingEnter = () => {};
+const handlePreventSubmit = (event) => {
+  event.preventDefault();
+  return false;
+};
 
-const handleCreateMenuUsingClick = () => {
+const handleCreateMenuUsingEnter = (event) => {
+  if (event.keyCode === 13) {
+    event.preventDefault();
+    menuSubmitButton.click();
+  }
+};
+
+const handleCreateMenuUsingClick = (event) => {
   const menuListItemClasses = [
     "menu-list-item",
     "d-flex",
@@ -57,5 +67,6 @@ const createElement = (tagName, classArray) => {
   return tag;
 };
 
+menuForm.addEventListener("submit", handlePreventSubmit);
 menuNameInput.addEventListener("keyup", handleCreateMenuUsingEnter);
 menuSubmitButton.addEventListener("click", handleCreateMenuUsingClick);
