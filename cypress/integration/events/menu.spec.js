@@ -3,8 +3,18 @@ describe("menu ui test", () => {
     cy.visit("/");
   });
 
+  /**
+   * input id : espresso-menu-name
+   * 확인 버튼 id : espresso-menu-submit-button
+   *  ul id : espresso-menu-list
+   * li class : menu-list-item
+   * menu name (span class) : menu-name
+   */
+
   describe("메뉴 추가 event", () => {
-    it("확인 버튼 또는 엔터키 입력으로 메뉴를 추가한다.", () => {});
+    it("확인 버튼으로 메뉴를 추가한다.", () => {});
+
+    it("엔터키 입력으로 메뉴를 추가한다.", () => {});
 
     it("확인 버튼을 누르면 input 값은 빈 값으로 초기화한다.", () => {});
 
