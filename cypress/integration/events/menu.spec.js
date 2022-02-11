@@ -26,7 +26,7 @@ describe("menu ui test", () => {
     it("확인 버튼을 누르면 input 값은 빈 값으로 초기화한다.", () => {
       cy.get("#espresso-menu-name").type("카페모카");
       cy.get("#espresso-menu-submit-button").click();
-      cy.get("#espresso-menu-name").should("contain.text", "");
+      cy.get("#espresso-menu-name").should("contain.value", "");
     });
 
     it("사용자 입력값이 빈 값이라면 추가되지 않는다.", () => {});

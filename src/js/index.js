@@ -56,6 +56,8 @@ const handleCreateMenuUsingClick = (event) => {
   RemoveButton.textContent = "삭제";
   li.append(span, EditButton, RemoveButton);
   menuList.appendChild(li);
+
+  menuNameInput.value = "";
 };
 
 // const createMenuComponent = (name) => {
