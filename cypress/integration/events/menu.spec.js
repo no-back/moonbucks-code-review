@@ -29,7 +29,15 @@ describe("menu ui test", () => {
       cy.get("#espresso-menu-name").should("contain.value", "");
     });
 
-    it("사용자 입력값이 빈 값이라면 추가되지 않는다.", () => {});
+    it("사용자 입력값이 빈 값이라면 추가되지 않는다. (click)", () => {
+      cy.get("#espresso-menu-submit-button").click();
+      cy.get(".menu-list-item").should("not.exist");
+    });
+
+    it("사용자 입력값이 빈 값이라면 추가되지 않는다. (enter)", () => {
+      cy.get("#espresso-menu-submit-button").type("{enter}");
+      cy.get(".menu-list-item").should("not.exist");
+    });
   });
 
   describe("메뉴 수정 event", () => {
