@@ -28,7 +28,6 @@ const handleCreateMenuUsingClick = (event) => {
   if (!menuNameInput.value) {
     return false;
   }
-
   const menuListItemClasses = [
     "menu-list-item",
     "d-flex",
@@ -63,9 +62,6 @@ const handleCreateMenuUsingClick = (event) => {
 
   menuNameInput.value = "";
 };
-
-// const createMenuComponent = (name) => {
-// };
 
 const createElement = (tagName, classArray) => {
   const tag = document.createElement(tagName);

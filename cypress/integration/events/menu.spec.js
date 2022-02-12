@@ -41,9 +41,15 @@ describe("menu ui test", () => {
   });
 
   describe("메뉴 수정 event", () => {
-    it("수정 버튼을 누르면 prompt 창이 뜬다.", () => {});
-
-    it("prompt 창에 값을 입력하고 확인을 누르면 메뉴가 수정된다.", () => {});
+    it("prompt 창에 값을 입력하고 확인을 누르면 메뉴가 수정된다.", () => {
+      cy.window().then(function (win) {
+        cy.get("#espresso-menu-name").type("카페라떼");
+        cy.get("#espresso-menu-submit-button").click();
+        cy.get(".menu-edit-button").click();
+        cy.stub(win, "prompt").returns("카라멜마끼아또");
+        cy.get(".menu-list-item").should("contain.text", "카라멜마끼아또");
+      });
+    });
   });
 
   describe("메뉴 삭제 event", () => {
