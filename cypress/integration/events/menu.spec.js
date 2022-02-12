@@ -42,33 +42,39 @@ describe("menu ui test", () => {
 
   describe("메뉴 수정 event", () => {
     it("prompt 창에 값을 입력하고 확인을 누르면 메뉴가 수정된다.", () => {
-      cy.window().then(function (win) {
-        cy.get("#espresso-menu-name").type("카페라떼");
+
+      cy.window().then(function (prompt) {
+        cy.get("#espresso-menu-name").type("아이스 라떼");
         cy.get("#espresso-menu-submit-button").click();
         cy.get(".menu-edit-button").click();
-        cy.stub(win, "prompt").returns("카라멜마끼아또");
-        cy.get(".menu-list-item").should("contain.text", "카라멜마끼아또");
+        //stubbing prompt window
+        cy.stub(prompt, "prompt").returns("카라멜마끼아또");
+        // click on Click for JS Prompt button
+        cy.get('.menu-edit-button').click()
+        // verify application message on clicking on OK
+        cy.get('.menu-name').contains('카라멜마끼아또')
       });
     });
   });
 
   describe("메뉴 삭제 event", () => {
     it("confirm 창에 확인 버튼을 누르면 메뉴가 삭제된다.", () => {
-      cy.get("#espresso-menu-name").type("아이스 아메리카노");
-      cy.get("#espresso-menu-submit-button").click();
-      cy.get(".menu-edit-button").click();
-      cy.on("window:confirm", function () {
-        return true;
+
+      cy.window().then(function (confirm) {
+        cy.get("#espresso-menu-name").type("아이스 아메리카노");
+        cy.get("#espresso-menu-submit-button").click();
+        cy.get(".menu-remove-button").click();
+        cy.stub(confirm, "confirm").returns(true);
+        cy.get('.menu-list-item').should('not.exist')
       });
     });
 
     it("confirm 창에 취소 버튼을 누르면 메뉴가 남아있다.", () => {
       cy.get("#espresso-menu-name").type("아이스 아메리카노");
       cy.get("#espresso-menu-submit-button").click();
-      cy.get(".menu-edit-button").click();
-      cy.on("window:confirm", function () {
-        return false;
-      });
+      cy.get(".menu-remove-button").click();
+      cy.on('window:confirm', () => false);
+      cy.get(".menu-name").should("contain.text", "아이스 아메리카노");
     });
   });
 
