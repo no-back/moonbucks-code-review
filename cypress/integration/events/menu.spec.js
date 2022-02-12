@@ -79,6 +79,22 @@ describe("menu ui test", () => {
   });
 
   describe("메뉴 개수 count", () => {
-    it("총 메뉴 갯수를 count하여 상단에 보여준다.", () => {});
+    it("총 메뉴 갯수를 확인한다.", () => {
+      const menus = ['아인슈페너', '샤케라또', '연유라떼']
+      for (const menu of menus) {
+        cy.get("#espresso-menu-name").type(menu);
+        cy.get("#espresso-menu-submit-button").click();
+      }
+      cy.get('#espresso-menu-list').find('li').should('have.length', 3)
+    });
+
+    it("총 메뉴 갯수를 count하여 상단에 보여준다.", () => {
+      const menus = ['토피넛라떼', '룽고', '리스뜨레또']
+      for (const menu of menus) {
+        cy.get("#espresso-menu-name").type(menu);
+        cy.get("#espresso-menu-submit-button").click();
+      }
+      cy.get('.menu-count').should("contain.text", "총 3개")
+    });
   });
 });

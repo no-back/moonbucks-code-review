@@ -11,6 +11,8 @@ const menuSubmitButton = document.getElementById("espresso-menu-submit-button");
 const menuList = document.getElementById("espresso-menu-list");
 const menuListItem = document.querySelectorAll(".menu-list-item");
 const menuName = document.querySelector(".menu-name");
+const menuCount = document.querySelector(".menu-count")
+
 
 const handleModifiyButtonEvent = (event) => {
   if (event.target && event.target.textContent === "수정") {
@@ -26,6 +28,8 @@ const handleDeleteButtonEvent = (event) => {
     console.log(event);
     shouldDelete && event.path[1].remove();
   }
+
+
 }
 
 const handlePreventSubmit = (event) => {
