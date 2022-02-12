@@ -1,0 +1,16 @@
+{
+  "name": "moonbucks-code-review",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/no-back/moonbucks-code-review.git",
+  "author": "raven <reblackraven@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "cypress": "^9.4.1",
+    "jest": "^27.5.1"
+  },
+  "scripts": {
+    "test:cypress": "cypress open",
+    "test:jest": "jest ./test --watchAll --collect[=true] --logHeapUsage"
+  }
+}
