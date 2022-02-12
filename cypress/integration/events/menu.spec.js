@@ -53,11 +53,23 @@ describe("menu ui test", () => {
   });
 
   describe("메뉴 삭제 event", () => {
-    it("삭제 버튼을 누르면 confirm 창이 뜬다.", () => {});
+    it("confirm 창에 확인 버튼을 누르면 메뉴가 삭제된다.", () => {
+      cy.get("#espresso-menu-name").type("아이스 아메리카노");
+      cy.get("#espresso-menu-submit-button").click();
+      cy.get(".menu-edit-button").click();
+      cy.on("window:confirm", function () {
+        return true;
+      });
+    });
 
-    it("confirm 창에 확인 버튼을 누르면 메뉴가 삭제된다.", () => {});
-
-    it("confirm 창에 취소 버튼을 누르면 메뉴가 남아있다.", () => {});
+    it("confirm 창에 취소 버튼을 누르면 메뉴가 남아있다.", () => {
+      cy.get("#espresso-menu-name").type("아이스 아메리카노");
+      cy.get("#espresso-menu-submit-button").click();
+      cy.get(".menu-edit-button").click();
+      cy.on("window:confirm", function () {
+        return false;
+      });
+    });
   });
 
   describe("메뉴 개수 count", () => {
