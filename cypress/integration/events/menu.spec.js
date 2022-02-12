@@ -3,14 +3,6 @@ describe("menu ui test", () => {
     cy.visit("/");
   });
 
-  /**
-   * input id : espresso-menu-name
-   * 확인 버튼 id : espresso-menu-submit-button
-   *  ul id : espresso-menu-list
-   * li class : menu-list-item
-   * menu name (span class) : menu-name
-   */
-
   describe("메뉴 추가 event", () => {
     it("확인 버튼으로 메뉴를 추가한다.", () => {
       cy.get("#espresso-menu-name").type("카페라떼");
@@ -47,11 +39,8 @@ describe("menu ui test", () => {
         cy.get("#espresso-menu-name").type("아이스 라떼");
         cy.get("#espresso-menu-submit-button").click();
         cy.get(".menu-edit-button").click();
-        //stubbing prompt window
         cy.stub(prompt, "prompt").returns("카라멜마끼아또");
-        // click on Click for JS Prompt button
         cy.get('.menu-edit-button').click()
-        // verify application message on clicking on OK
         cy.get('.menu-name').contains('카라멜마끼아또')
       });
     });
