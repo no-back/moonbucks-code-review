@@ -57,9 +57,12 @@ function App() {
       const menuName = e.target.closest("li").querySelector(".menu-name");
       const rtn = prompt("수정할 메뉴명을 적어주세요.", menuName.innerText);
 
-      if (menuName.innerText === rtn) alert("기존과 동일한 메뉴명입니다.");
-      else if (rtn === null) alert("");
-      e.target.closest("li").querySelector(".menu-name").innerText = rtn;
+      if (menuName.innerText === rtn) {
+        alert("기존과 동일한 메뉴명입니다.");
+      } else if (rtn === "") {
+        alert("빈 값을 입력하셨습니다.");
+      } else if (rtn !== null)
+        e.target.closest("li").querySelector(".menu-name").innerText = rtn;
     }
 
     // remove menu item
