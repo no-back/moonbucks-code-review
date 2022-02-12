@@ -39,7 +39,6 @@
   <a href="https://blackcoffee-study.github.io/moonbucks-menu/">🖥️ 데모 링크</a>
 </p> -->
 
-<br/>
 
 ## 🎯 step1 요구사항 - 돔 조작과 이벤트 핸들링으로 메뉴 관리하기
 
