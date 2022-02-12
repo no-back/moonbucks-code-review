@@ -72,3 +72,16 @@ const createElement = (tagName, classArray) => {
 menuForm.addEventListener("submit", handlePreventSubmit);
 menuNameInput.addEventListener("keyup", handleCreateMenuUsingEnter);
 menuSubmitButton.addEventListener("click", handleCreateMenuUsingClick);
+menuList.addEventListener("click", (e) => {
+  if (e.target && e.target.textContent === "수정") {
+    const targetMenuName = prompt("수정 할 메뉴 이름을 입력해주세요 :)");
+    const name = e.path[1].querySelector(".menu-name");
+    name.textContent = targetMenuName;
+  }
+
+  if (e.target && e.target.textContent === "삭제") {
+    const shouldDelete = confirm("메뉴를 삭제하시겠습니까?");
+    console.log(e);
+    shouldDelete && e.path[1].remove();
+  }
+});
