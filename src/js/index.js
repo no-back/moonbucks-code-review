@@ -13,6 +13,10 @@ const menuListItem = document.querySelectorAll(".menu-list-item");
 const menuName = document.querySelector(".menu-name");
 const menuCount = document.querySelector(".menu-count")
 
+const handleModifiyCountList = () => {
+  const count = menuList.querySelectorAll('li').length
+  menuCount.textContent = `총 ${count}개`
+}
 
 const handleModifiyButtonEvent = (event) => {
   if (event.target && event.target.textContent === "수정") {
@@ -27,9 +31,8 @@ const handleDeleteButtonEvent = (event) => {
     const shouldDelete = confirm("메뉴를 삭제하시겠습니까?");
     console.log(event);
     shouldDelete && event.path[1].remove();
+    handleModifiyCountList()
   }
-
-
 }
 
 const handlePreventSubmit = (event) => {
@@ -81,6 +84,7 @@ const handleCreateMenuUsingClick = (event) => {
   menuList.appendChild(li);
 
   menuNameInput.value = "";
+  handleModifiyCountList();
 };
 
 const createElement = (tagName, classArray) => {
